@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Търсене на Контакт</title>
+        <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'search.css' %}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div id="search_form">
+            <form action="" method="get">
+                <div class="wrap">
+                   <div class="search">
+                      <input type="text" class="searchTerm" placeholder="Напишете името на контакт, койтп търсите ..." name="q">
+                      <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                          Търсене
+                     </button>
+                   </div>
+                </div>
+            </form>
+        </div>
+        <div id="search_result">
+            {% block content %}
+              {% if contact_list %}
+              <h1>Намерени контакти</h1>
+              <ul>
+                {% for contact in contact_list %}
+                  <li>
+                      <a href="{% url 'contact-detail' contact.pk %}">{{ contact.contact_title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+              {% else %}
+                <p>Нищо не е намерено.</p>
+              {% endif %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

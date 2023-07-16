@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакт</title>
+</head>
+<body>
+   {% block content %}
+            {% if contact %}
+                  <p><strong>Име:</strong> {{ contact.contact_title }}</p>
+                  <p><strong>Телефон 1:</strong> {{ contact.contact_phone_1 }}<br/>
+                  <strong>Телефон 2:</strong> {{ contact.contact_phone_2 }}</p>
+                  <p><strong>Електронен Адрес 1:</strong> {{ contact.contact_mail_1 }}<br/>
+                  <strong>Електронен Адрес 2:</strong> {{ contact.contact_mail_2 }}</p>
+                  <p><strong>Вид контакт:</strong> {{ contact.contact_type }}</p>
+                  <div style="margin-left:20px;margin-top:20px;width: 50%;">
+                    <h4>Бележки:</h4>
+                    <p>{{ contact.contact_note|safe }}</p>
+                  </div>
+            {% endif %}
+   {% endblock %}
+</body>
+</html>
